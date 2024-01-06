@@ -11,7 +11,7 @@ type Phone interface {
 }
 
 type StationPhone interface {
-	ButtonsCount(int) int
+	ButtonsCount() string
 }
 
 type Smartphone interface {
@@ -63,23 +63,27 @@ func NewandroidPhone(brand, model, os string) *androidPhone {
 	return &androidPhone{brand: brand, model: model, os: os}
 }
 
-//
-//type radioPhone struct {
-//}
-//
-//func (c *radioPhone) Brand(brand string) string {
-//	return brand
-//}
-//func (c *radioPhone) Model(model string) string {
-//	return model
-//}
-//func (c *radioPhone) Type() string {
-//	return "station"
-//}
-//func (c *radioPhone) ButtonsCount(countOfButton int) int {
-//	return countOfButton
-//
-//}
+type radioPhone struct {
+	brand string
+	model string
+	cob   string
+}
+
+func (c *radioPhone) Brand() string {
+	return c.brand
+}
+func (c *radioPhone) Model() string {
+	return c.model
+}
+func (c *radioPhone) Type() string {
+	return "station"
+}
+func (c *radioPhone) ButtonsCount() string {
+	return c.cob
+}
+func NewradioPhone(brand, model, cob string) *radioPhone {
+	return &radioPhone{brand: brand, model: model, cob: cob}
+}
 
 //func NewapplePhone(model, typephone string, weight int, diagonal float64) applePhone {
 //	return applePhone{model: Phone.Model(), typephone: Phone.Type(), os: Smartphone.OS(), weight: weight, diagonal: diagonal}
